@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+    <title>Index</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+        <h2>@TempData["HeaderName"]</h2>
+    </div>
+    <!-- Grey with black text -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/Staff/Index">Index</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Staff/Create">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Staff/List">List</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-3">
+        <h2>Create Page</h2>
+        <p>The .table-hover class enables a hover state (grey back:</p>
+
+<form action="/action_page.php">
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Id:</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter First Name" name="email">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">First Name:</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter First Name" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Last Name:</label>
+        <input type="text" class="form-control" id="pwd" placeholder="Enter Last Name" name="pswd">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Gender:</label>
+        <input type="text" class="form-control" id="pwd" placeholder="Enter Gender" name="pswd">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Age:</label>
+        <input type="number" class="form-control" id="pwd" placeholder="Enter Age" name="pswd">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+    </div>
+</body>
+</html>

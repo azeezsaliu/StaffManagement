@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    string name = "John";
+    int age = 21;
+    int value = 7;
+
+    List<String> items = new List<string>()
+    {
+        "Book", "Ruler", "Pen"
+    };
+
+    string comp = "<h1>Elev8</h1>";
+
+}
+
+@Html.Raw(comp)
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h1>Your name is @name</h1>
+
+@if(age > 30){
+    <h1>@name is an Adult and he is @age yrs old</h1>
+}
+else
+{
+    <h1>@name is underage</h1>
+}
+
+@switch (value)
+{
+    case 1:
+        <h2>One...</h2>
+        break;
+    case 2:
+        <h2>TWO...</h2>
+        break;
+    case 3:
+        <h2>THREE...</h2>
+        break;
+    default:
+        <h2>Out of Range</h2>
+        break;
+}
+
+@foreach(string it in items)
+{
+    <h1>@it</h1>
+}
+
+
