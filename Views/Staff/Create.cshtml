@@ -28,26 +28,26 @@
         <h2>Create Page</h2>
         <p>The .table-hover class enables a hover state (grey back:</p>
 
-<form action="/action_page.php">
+<form asp-controller="Staff" asp-action="Create" method="post">
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Id:</label>
-        <input type="text" class="form-control" id="email" placeholder="Enter First Name" name="email">
+        <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">
     </div>
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">First Name:</label>
-        <input type="text" class="form-control" id="email" placeholder="Enter First Name" name="email">
+        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" name="firstName">
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Last Name:</label>
-        <input type="text" class="form-control" id="pwd" placeholder="Enter Last Name" name="pswd">
+        <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" name="lastName">
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Gender:</label>
-        <input type="text" class="form-control" id="pwd" placeholder="Enter Gender" name="pswd">
+        <input type="text" class="form-control" id="gender" placeholder="Enter Gender" name="gender">
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Age:</label>
-        <input type="number" class="form-control" id="pwd" placeholder="Enter Age" name="pswd">
+        <input type="number" class="form-control" id="age" placeholder="Enter Age" name="age">
     </div>
     
     <button type="submit" class="btn btn-primary">Submit</button>

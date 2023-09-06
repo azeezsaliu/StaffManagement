@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Staff>
 <html>
 <head>
     <title>Index</title>
@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container-fluid p-5 bg-primary text-white text-center">
-        <h2>@ViewData["HeaderName"]</h2>
+        <h2>@TempData["HeaderName"]</h2>
     </div>
     <!-- Grey with black text -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -32,22 +32,29 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
-                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                </tr>
+                @foreach(Staff s in Model){
+                    <tr>
+                        <td>@s.Id</td>
+                        <td>@s.FirstName</td>
+                        <td>@s.LastName</td>
+                        <td>@s.Gender</td>
+                        <td>@s.Age</td>
+                        <td>
+                            <a class="btn btn-info btn-sm" href="/Staff/Detail/@s.Id">Detail</a> |
+                            <a class="btn btn-success btn-sm" href="/Staff/Edit/@s.Id">Edit</a> |
+                            <a class="btn btn-danger btn-sm" href="#">Delete</a> 
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
