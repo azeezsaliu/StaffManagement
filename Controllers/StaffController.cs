@@ -25,9 +25,9 @@ namespace StaffManagement.Controllers
 
         [HttpGet]
         [ActionName("Home")]
-        public IActionResult Index(string name)
+        public IActionResult Index()
         {
-            HttpContext.Session.SetString("name", name);
+            HttpContext.Session.SetString("name", "name");
             HttpContext.Session.SetInt32("age", 30);
 
 
@@ -77,12 +77,12 @@ namespace StaffManagement.Controllers
             Staff staff = staffService.ReadById(id);
             return View(staff);
         }
-        [HttpPut]
+        [HttpPost]
         public IActionResult Edit(int id, Staff staff)
         {
             //please complete this
             staffService.Update(id, staff);
-            return View();
+            return RedirectToAction("List");
         }
 
         [NonAction]

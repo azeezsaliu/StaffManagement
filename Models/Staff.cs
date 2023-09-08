@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace StaffManagement.Models
 {
@@ -9,7 +10,7 @@ namespace StaffManagement.Models
         //[Compare("LastName")]
         public string FirstName { get; set; }
         [Required]
-        [StringLength(5)]
+        [StringLength(50)]
         public string LastName { get; set; }
         [Required]
         public string Gender { get; set; }

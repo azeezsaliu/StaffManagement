@@ -9,11 +9,13 @@
 
 <form asp-controller="Staff" asp-action="Create" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
+    @*
     <div class="mb-3 mt-3">
         <label asp-for="@Model.Id" for="email" class="form-label">Id:</label>
         <input asp-for="@Model.Id" class="form-control" placeholder="Enter Id">
         <span asp-validation-for="@Model.Id"></span>
     </div>
+    *@
     <div class="mb-3 mt-3">
         <label asp-for="@Model.FirstName" for="email" class="form-label">First Name:</label>
         <input asp-for="@Model.FirstName" class="form-control" placeholder="Enter First Name">
