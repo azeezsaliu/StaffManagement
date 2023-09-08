@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<html>
+<head>
+    <title>Index</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+        <h2>@ViewBag.HeaderName</h2>
+    </div>
+    <!-- Grey with black text -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link @ViewBag.indexActive" asp-controller="Staff" asp-action="Home">Index</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @ViewBag.createActive" asp-controller="Staff" asp-action="Create">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @ViewBag.listActive" asp-controller="Staff" asp-action="List">List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @ViewBag.listActive" href="#">@HttpContextAccessor.HttpContext.Session.GetString("name")</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-3">
+        @RenderBody()
+    </div>
+
+    <div class="container-fluid p-2 bg-success text-white text-center">
+        <h3>@RenderSection("footer", false)</h3>
+    </div>
+</body>
+</html>

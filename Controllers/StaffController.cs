@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StaffManagement.Models;
+using StaffManagement.Service;
 
 namespace StaffManagement.Controllers
 {
     public class StaffController : Controller
     {
+        /*
         static List<Staff> staffs = new List<Staff>()
         {
             new Staff(){Id=1, FirstName="John", LastName="Emma", Gender="Male", Age=23},
@@ -12,70 +14,74 @@ namespace StaffManagement.Controllers
             new Staff(){Id=3, FirstName="Kaan", LastName="Hassan", Gender="Male",Age=12}
         };
 
-        static int index = 2;
+        */
+
+        private IStaffService staffService;
+
+        public StaffController(IStaffService staffService) 
+        {
+            this.staffService = staffService;
+        }
 
         [HttpGet]
         [ActionName("Home")]
-        public IActionResult Index()
+        public IActionResult Index(string name)
         {
+            HttpContext.Session.SetString("name", name);
+            HttpContext.Session.SetInt32("age", 30);
+
+
             ViewBag.HeaderName = "Elev8 Index";
             return View();
-
-            //return RedirectToAction("Index", "Home");
 
         }
         
         public IActionResult List()
         {
-            //ViewData["HeaderName"] = "Elev8 List";
+
+            string name = HttpContext.Session.GetString("name");
+
+            ViewData["Name"] = name;
+            List<Staff> staffs = staffService.ReadAll();
             return View(staffs);
         }
         [HttpPost]
-        public IActionResult Create(int id, string firstName, string lastName, string gender, int age)
+        public IActionResult Create([FromForm] Staff staff)
         {
-            TempData["HeaderName"] = "Elev8 Create Redirect";
-            Staff staff = new Staff()
+
+            if (ModelState.IsValid)
             {
-                Id = id, FirstName = firstName, LastName = lastName, Gender = gender, Age=age
-            };
-            staffs.Add(staff);
-            //return View();
-            return RedirectToAction("List");
+                TempData["HeaderName"] = "Elev8 Create Redirect";
+
+                staffService.Create(staff);
+                return RedirectToAction("List");
+            }
+            return View(staff);
         }
         [HttpGet]
         public IActionResult Create()
         {
             //TempData["HeaderName"] = "Elev8 Create";
-            return View();
+            return View(new Staff());
         }
 
-        public IActionResult Detail(int id)
+        public IActionResult Detail([FromRoute] int id)
         {
 
-            var stu = from st in staffs
-                      where st.Id == id
-                      select st;
-
-            Staff staff = stu.ToList()[0];
-
+            Staff staff = staffService.ReadById(id);
             return View(staff);
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var stu = from st in staffs
-                      where st.Id == id
-                      select st;
-
-            Staff staff = stu.ToList()[0];
-
+            Staff staff = staffService.ReadById(id);
             return View(staff);
         }
-        [HttpPost]
-        public IActionResult Edit(int id, string firstName, string lastName, string gender, int age)
+        [HttpPut]
+        public IActionResult Edit(int id, Staff staff)
         {
             //please complete this
-
+            staffService.Update(id, staff);
             return View();
         }
 

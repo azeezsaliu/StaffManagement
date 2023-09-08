@@ -1,63 +1,9 @@
 ﻿@model IEnumerable<Staff>
-<html>
-<head>
-    <title>Index</title>
-    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container-fluid p-5 bg-primary text-white text-center">
-        <h2>@TempData["HeaderName"]</h2>
-    </div>
-    <!-- Grey with black text -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/Staff/Index">Index</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Staff/Create">Create</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Staff/List">List</a>
-                </li>
+@{
+    ViewBag.listActive = "active";
+}
+<h2>List Page</h2>
+<h2>From Session @ViewData["Name"]</h2>
+<p>The .table-hover class enables a hover state (grey back:</p>
 
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container mt-3">
-        <h2>List Page</h2>
-        <p>The .table-hover class enables a hover state (grey back:</p>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Gender</th>
-                    <th>Age</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach(Staff s in Model){
-                    <tr>
-                        <td>@s.Id</td>
-                        <td>@s.FirstName</td>
-                        <td>@s.LastName</td>
-                        <td>@s.Gender</td>
-                        <td>@s.Age</td>
-                        <td>
-                            <a class="btn btn-info btn-sm" href="/Staff/Detail/@s.Id">Detail</a> |
-                            <a class="btn btn-success btn-sm" href="/Staff/Edit/@s.Id">Edit</a> |
-                            <a class="btn btn-danger btn-sm" href="#">Delete</a> 
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-</body>
-</html>
+<partial name="_StaffTable" model="@Model" />
